@@ -1,3 +1,4 @@
+Version 3.0.9 patched Next links
 Version 3.0.8 Krypton or above needed. Added mpd support thru inputstream.adaptive
 Version 3.0.7 m3u8 version fix
 Version 3.0.6 auth fix
