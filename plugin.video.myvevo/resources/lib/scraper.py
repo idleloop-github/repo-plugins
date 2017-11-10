@@ -72,6 +72,10 @@ class myAddon(t1mAddon):
       nextUrl = None
       if '&genre=' in originUrl:
           nextUrl = a['paging'].get('next')
+          if (nextUrl is None):
+              actualPage = re.search('page=(\d+)', url)
+              if (int(actualPage.group(1)) < a['paging'].get('pages')):
+                    nextUrl = re.sub( r'page=(\d+)', 'page=' + str(int(actualPage.group(1)) + 1), url)          
           a = a['artists']
       for b in a:
           name = b['name']
@@ -201,6 +205,10 @@ class myAddon(t1mAddon):
           nextUrl = a.get('paging')
           if nextUrl is not None:
               nextUrl = nextUrl.get('next')
+              if (nextUrl is None):
+                  actualPage = re.search('page=(\d+)', url)
+                  if (int(actualPage.group(1)) < a['paging'].get('pages')):
+                        nextUrl = re.sub( r'page=(\d+)', 'page=' + str(int(actualPage.group(1)) + 1), url)              
       if type(a) is list:
           if a[0].get('stream') is not None:
               akeys = ['name', 'stream', 'thumbnailUrl']
